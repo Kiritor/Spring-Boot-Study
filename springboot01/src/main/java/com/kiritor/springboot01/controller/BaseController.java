@@ -9,6 +9,7 @@ public class BaseController {
 
     @RequestMapping("/")
     public String hello(){
+        
         return "hello Springboot";
     }
 
