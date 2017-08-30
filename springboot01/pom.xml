@@ -7,6 +7,7 @@
     <groupId>com.kiritor.springboot01</groupId>
     <artifactId>springboot01</artifactId>
     <version>1.0</version>
+    <!-- -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -20,11 +21,12 @@
     </properties>
 
     <dependencies>
+        <!-- web模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--测试模块-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
