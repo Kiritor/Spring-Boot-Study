@@ -1,13 +1,13 @@
-package com.kiritor.springboot02.controller;
+package com.kiritor.springboot04.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BaseController {
+public class HelloController {
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public String hello() {
-        return "hello Springboot";
+        return "hello springboot";
     }
 }

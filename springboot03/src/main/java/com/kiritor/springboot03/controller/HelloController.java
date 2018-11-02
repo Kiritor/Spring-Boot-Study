@@ -11,9 +11,10 @@ public class HelloController {
 
     @Resource
     User user;
+
     @RequestMapping("/")
-    public String hello(){
-        return user.getId()+":"+user.getUserName()+":"+user.getAge()+"||"+user.getDes();
+    public String hello() {
+        return user.getId() + ":" + user.getUserName() + ":" + user.getAge() + "||" + user.getDes();
     }
 
 }

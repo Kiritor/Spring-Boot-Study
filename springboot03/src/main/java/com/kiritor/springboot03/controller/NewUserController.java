@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@EnableConfigurationProperties({NewUser.class , Test.class})
+@EnableConfigurationProperties({NewUser.class, Test.class})
 public class NewUserController {
     @Resource
     NewUser newUser;
+
     @RequestMapping("/newuser")
-    public String hello(){
-        return newUser.getId()+":"+newUser.getUserName()+":"+newUser.getAge()+"||"+newUser.getDes();
+    public String hello() {
+        return newUser.getId() + ":" + newUser.getUserName() + ":" + newUser.getAge() + "||" + newUser.getDes();
     }
+
     @Resource
     Test test;
+
     @RequestMapping("/test")
-    public String test(){
-        return test.getUserName()+":"+test.getAge();
+    public String test() {
+        return test.getUserName() + ":" + test.getAge();
     }
 
 }
