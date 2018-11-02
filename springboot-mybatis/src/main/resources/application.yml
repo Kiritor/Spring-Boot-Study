@@ -1,16 +1,26 @@
+## 端口配置
+server:
+  servlet:
+    context-path: /springboot-mybatis
+  port: 8080
+
+
+## spring
 spring:
+  ## 数据源
   datasource:
     url: jdbc:mysql://localhost:3306/springboot?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
 
+## mybatis
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-server:
-  servlet:
-    context-path: /springboot-mybatis
-  port: 8080
+## 日志
+logging:
+  level:
+     com.kiritor.mapper: debug
 
