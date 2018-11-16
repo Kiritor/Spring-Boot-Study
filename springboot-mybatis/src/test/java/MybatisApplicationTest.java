@@ -1,4 +1,4 @@
-import com.kiritor.mapper.UserMapper;
+import com.kiritor.mapper.UserMapper2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,13 @@ public class MybatisApplicationTest {
 
     @SuppressWarnings("all")
     @Autowired
-    UserMapper userMapper;
+    UserMapper2 userMapper2;
 
     @Test
     public void test_db() {
 
         //开始进行测试
-        assertThat(userMapper.list().size()).isGreaterThan(1);
-        assertThat(userMapper.getOne("1")).isNotEqualTo(null);
-        assertThat(userMapper.getOne("xxx")).isEqualTo(null);
+        assertThat(userMapper2.list().size()).isGreaterThan(1);
 
 
 
