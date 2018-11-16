@@ -1,0 +1,44 @@
+## 端口配置
+server:
+  servlet:
+    context-path: /springboot-mybatis
+  port: 8080
+
+## spring
+spring:
+  ## 数据源
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      type: com.alibaba.druid.pool.DruidDataSource
+      jdbc-url: jdbc:mysql://localhost:3306/springboot?useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    branch01:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/manChat?useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+## mybatis
+mybatis:
+  type-aliases-package: com.kiritor.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+
+## mapper
+
+mapper:
+  identity: MYSQL
+  mappers:
+  - com.kiritor.utils.CommonMapper
+
+
+## 日志
+logging:
+  level:
+    com.kiritor.mapper: debug
+
