@@ -1,0 +1,118 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- Logging Properties -->
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %C{3}.%M(%F:%L) %m%n</Property>
+        <Property name="APP_LOG_ROOT">logs</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <RollingFile name="fileLogger" fileName="${APP_LOG_ROOT}/app-info.html"
+                     filePattern="${APP_LOG_ROOT}/app-info-%d{yyyy-MM-dd}.html">
+            <HTMLLayout charset="UTF-8" title="Howtodoinjava Info Logs" locationInfo="true" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+        </RollingFile>
+        <!-- File Appenders on need basis -->
+        <RollingFile name="frameworkLog" fileName="${APP_LOG_ROOT}/app-framework.log"
+                     filePattern="${APP_LOG_ROOT}/app-framework-%d{yyyy-MM-dd}-%i.log">
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="debugLog" fileName="${APP_LOG_ROOT}/app-debug.log"
+                     filePattern="${APP_LOG_ROOT}/app-debug-%d{yyyy-MM-dd}-%i.log">
+            <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="infoLog" fileName="${APP_LOG_ROOT}/app-info.log"
+                     filePattern="${APP_LOG_ROOT}/app-info-%d{yyyy-MM-dd}-%i.log" >
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="errorLog" fileName="${APP_LOG_ROOT}/app-error.log"
+                     filePattern="${APP_LOG_ROOT}/app-error-%d{yyyy-MM-dd}-%i.log" >
+            <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="perfLog" fileName="${APP_LOG_ROOT}/app-perf.log"
+                     filePattern="${APP_LOG_ROOT}/app-perf-%d{yyyy-MM-dd}-%i.log" >
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+        <RollingFile name="traceLog" fileName="${APP_LOG_ROOT}/app-trace.log"
+                     filePattern="${APP_LOG_ROOT}/app-trace-%d{yyyy-MM-dd}-%i.log" >
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="19500KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.kiritor.controller" additivity="false" level="debug">
+            <AppenderRef ref="debugLog" />
+            <AppenderRef ref="infoLog"  />
+            <AppenderRef ref="errorLog" />
+            <AppenderRef ref="Console"  />
+            <AppenderRef ref="fileLogger"/>
+        </Logger>
+
+        <Logger name="com.kiritor" additivity="false" level="info">
+            <AppenderRef ref="perfLog" />
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="warn">
+            <AppenderRef ref="Console"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
+        <!--
+                Properties 是用来定义共用属性的，也就是在其他配置标签中直接使用        %d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %C{3}.%M(%F:%L) %m%n 这些东西，都是log4j2内置的信息展示规则，日常开发，这些够用了
+                Appenders 白话讲，就是指定不同的输出方式
+                Console 就是指定控制台输出
+                RollingFile 就是输出到指定文件
+                filePattern 指定回滚的文件名，回滚也就是当前的日志文件不满足Policies和DefaultRolloverStrategy的条件时，重新命名，并且生产新的文件
+                TimeBasedTriggeringPolicy的interval=1表示1天
+                LevelRangeFilter 就是指定什么等级的日志
+                Loggers 顾名思义，就是配置具体需要记录日志的入口（类）
+         -->
