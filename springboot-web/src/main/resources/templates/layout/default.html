@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>SpringBoot-Web模板布局</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" media="screen" href="../../css/common.css" th:href="@{/css/common.css}" />
+</head>
+<body>
+<header>
+    SpringBoot-Web
+</header>
+<section id="content" layout:fragment="content">
+  <p th:text="${'Hello ' + name + '!'}"></p>
+  <p>This is default main content with default layout</p>
+</section>
+<footer>
+    Kiritor
+</footer>
+</body>
+</html>
