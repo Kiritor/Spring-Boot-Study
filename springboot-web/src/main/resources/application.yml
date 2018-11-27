@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /springboot-web
+spring:
+  devtools:
+    restart:
+      ## 热部署生效
+      enabled: true
+      ## 重启目录
+      additional-paths: src/main/java
+      ## 不重启目录
+      exclude: src/main/resources
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    ## 热部署文件
+    cache: false
+  mvc:
+    static-path-pattern: /**
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+    static-locations: classpath:/static/
+

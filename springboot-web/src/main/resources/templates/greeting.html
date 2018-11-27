@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layout/default">
+<head>
+  <title>Spring Boot 模板布局</title>
+</head>
+<body>
+<!--<section layout:fragment="content">-->
+<section layout:fragment="content">
+  <p th:text="${name}"></p>
+  <img src="images/home.png" />
+</section>
+</body>
+</html>
