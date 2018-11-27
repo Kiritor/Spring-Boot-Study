@@ -1,0 +1,18 @@
+server:
+  port: 8770
+spring:
+  application:
+    name: clientServer
+eureka:
+   instance:
+      hostname: localhost
+      #eureka服务器页面中status的请求路径
+      status-page-url: http://localhost:8770/index
+   client:
+      serviceUrl:
+        defaultZone: http://master:8771/
+      fetch-registry: false
+      register-with-eureka: false
+
+   server:
+       enable-self-preservation: false
