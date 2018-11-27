@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://localhost:3306/springboot
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    secondary:
+      jdbc-url: jdbc:mysql://localhost:3306/manchat
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+
+## 日志
+logging:
+  level:
+    com.kiritor.mapper: debug
+
